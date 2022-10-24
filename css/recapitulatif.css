@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Sansita+Swashed:wght@500&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Sansita Swashed', cursive;
+}
+
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+#container-page {
+    background-color: rgb(210, 210, 226);
+    height: 100vh;
+    background-image: url("../img/back_cart.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    /* L'image s'adapte pour couvrir son container */
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+h1 {
+    color: white;
+    text-shadow: 1px 1px 2px black;
+}
+
+
+                        /**********  TABLEAU ************/
+
+#tableau-recap {
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+    background-color: rgb(219, 213, 213, 0.7);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+#tableau-recap thead {
+    background-color: rgb(156, 134, 156);
+    color: white;
+    text-shadow: 1px 1px 2px black;
+}
+
+#tableau-recap tr {
+    border-radius: 5px;
+    padding: 5px;
+    width: 700px;
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
+    gap: 40px;
+    margin-top: 7px;
+}
+
+/* 1 tr sur 2 prendra cet effet - pair*/
+#tableau-recap tbody tr:nth-child(even){
+    background-color: #f2f2f2;
+}
+
+/* 1 tr sur 2 prendra cet effet - impair*/
+#tableau-recap tbody tr:nth-child(odd){
+    background-color: rgb(190, 177, 190);
+}
+
+
+#tableau-recap tbody tr:hover {
+    background-color: rgba(144, 94, 163, 0.644);
+    color: white;
+}
+
+
+
+#tableau-recap th {
+    /* Je donne une width pour que les th et td aient la même afin de centrer leurs éléments pour qu'ils  soient bien alignés */
+    width: 20%;
+    font-size: 1.1rem;
+}
+
+#tableau-recap td {
+    width: 20%;
+    text-align: center;
+    font-size: 1.05rem;
+}
+
+#tableau-recap #quantite-produit{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+
+#tableau-recap #quantite-produit a:hover {
+    color: white;
+}
+
+#tableau-recap #general {
+    margin-top: 20px;
+    background-color: rgb(243, 243, 229);
+}
+
+#tableau-recap #general:hover {
+    background-color: rgb(221, 221, 206);
+    color: black;
+}
+
+#tableau-recap #general td {
+    font-size: 1.3rem;
+}
+
+#tableau-recap #supp-produits {
+    flex-grow: 1;
+}
+
+
+
+                                        /***************  Retour index ******************/
+
+#retour-index {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    text-decoration: none;
+    margin-top: 100px;
+    background-color: rgb(116, 220, 238);
+    border: 2px solid white;
+    padding: 10px;
+    border-radius: 20px;
+    color: white;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+
+#retour-index:hover {
+    background-color: rgb(133, 190, 228);
+}
+

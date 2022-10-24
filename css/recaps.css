@@ -1,0 +1,119 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+#container-page {
+    background-color: rgb(210, 210, 226);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-image: url("../img/cart.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+
+}
+
+
+                        /**********  TABLEAU ************/
+
+#tableau-recap {
+    border: 1px solid rgb(145, 93, 93);
+    background-color: rgb(151, 112, 39, 0.9);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+#tableau-recap thead {
+    background-color: rgb(151, 112, 39);
+    color: white;
+    text-shadow: 1px 1px 2px black;
+}
+
+#tableau-recap tr {
+    border-radius: 5px;
+    padding: 5px;
+    width: 700px;
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
+    gap: 40px;
+    margin-top: 7px;
+}
+
+/* 1 tr sur 2 prendra cet effet - pair*/
+#tableau-recap tbody tr:nth-child(even){
+    background-color: #f2f2f2;
+}
+
+/* 1 tr sur 2 prendra cet effet - impair*/
+#tableau-recap tbody tr:nth-child(odd){
+    background-color: rgb(194, 159, 113);
+}
+
+
+#tableau-recap tbody tr:hover {
+    background-color: rgba(190, 141, 34, 0.9);
+    color: white;
+}
+
+
+
+#tableau-recap th {
+    /* Je donne une width pour que les th et td aient la même afin de centrer leurs éléments pour qu'ils  soient bien alignés */
+    width: 20%;
+    font-size: 1.1rem;
+}
+
+#tableau-recap td {
+    width: 20%;
+    text-align: center;
+    font-size: 1.05rem;
+}
+
+#tableau-recap #general {
+    margin-top: 20px;
+    background-color: beige;
+}
+
+#tableau-recap #general:hover {
+    background-color: rgb(221, 221, 206);
+    color: black;
+}
+
+#tableau-recap #general td {
+    font-size: 1.3rem;
+}
+
+#tableau-recap #total-g {
+    /* Pour qu'il occupe tout l'espace non alloué disponible */
+    flex-grow: 1;
+}
+
+
+
+                                        /***************  Retour index ******************/
+
+#retour-index {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    text-decoration: none;
+    margin-top: 100px;
+    background-color: rgb(56, 78, 207);
+    border: 2px solid white;
+    padding: 10px;
+    border-radius: 3px;
+    color: white;
+}
+
+
+#retour-index:hover {
+    background-color: rgb(52, 73, 192);
+}
+

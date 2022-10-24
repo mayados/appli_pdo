@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Sansita+Swashed:wght@500&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Sansita Swashed', cursive;
+}
+
+
+#container-page {
+    height: 100vh;
+    background-image: url("../img/achats_woman.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+
+}
+
+h1 {
+    color: white;
+    text-shadow: 2px 1px 2px black;
+}
+
+
+
+                                        /* FORMULAIRE */
+
+form {
+    background-color: rgb(219, 213, 213, 0.5);
+    width: 500px;
+    height: 450px;
+    border-radius: 10px;
+    padding: 20px;    
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+
+}
+
+
+form input {
+    width: 200px;
+    height: 30px;
+    border-radius: 5px;
+    border: none;
+    padding: 0 10px;
+    background-color: rgb(255, 249, 249);
+}
+
+.label-p {
+    font-size: 1.1rem;
+}
+
+                                        /*** BOUTON DU FORMULAIRE ***/
+
+form #ajouter {
+    width: 300px;
+    height: 45px;
+    border-radius: 5px;
+    transition: 0.8s;
+    font-size: 1.2rem;
+}
+
+form #ajouter:hover {
+    cursor: pointer;
+    background-color: rgb(184, 157, 157);
+    color: white;
+    border: 1px solid white;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+    transition: 1s;
+}
+
+                                        /*** RECAPITULATIF ***/
+
+#recap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(211, 163, 101);
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+    transition: 1s;
+}
+
+#recap:hover {
+    cursor: pointer;
+    background-color: rgb(175, 127, 64);
+    transform: scale(1.1);
+}
