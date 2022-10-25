@@ -42,11 +42,14 @@ function findAll(){
 
     /* Pour chaque produit, on affiche ses informations */
     foreach ($products as $product) {
-    echo $product['name']." ".$product['description']." ".$product['price']." euros<br>"; 
+    echo "<br><br><a href='product.php'>".$product['name']."</a><br><br> "
+    .substr($product['description'],0,45)."...<br> 
+    <strong>".$product['price']." euros</strong><br>
+    <a href='#'>Ajouter au panier</a>"; 
     }
 }
 
-findAll();
+// findAll();
 
 //Fonction findOneById($id) : renvoie le produit répondant à l'id en paramètre
 
@@ -54,16 +57,18 @@ function findOneById($id){
     /* Nous nous connectons à la base de données */
     $pdo = connexion();
     /* Faire attention à la syntaxe (des quotes) sinon la variable n'est pas récupérée */
-    $sqlQuery = 'SELECT name FROM product WHERE id='.$id.'';
+    $sqlQuery = 'SELECT name,description,price FROM product WHERE id='.$id.'';
     $leProduit = $pdo->prepare($sqlQuery);
     $leProduit->execute();
     $produit = $leProduit->fetchAll();
     foreach ($produit as $prod) {
-        echo $prod['name']."<br>"; 
+        echo "<br>".$prod['name']."<br>"
+        .$prod['description']."<br>"
+        .$prod['price']."<br>"; 
     }
 }
 
-findOneById(10);
+// findOneById(10);
 
 //Fonction insertProduct($name,$descr,$price) : insère en bdd un nouvel enregistrement dans la table product
 
@@ -78,6 +83,6 @@ function insertProduct($name,$descr,$price){
     echo "entree ajoutee";
 }
 
- insertProduct('ballon','super objet pour les fêtes',4);
+//  insertProduct('ballon','super objet pour les fêtes',4);
 
 ?>
