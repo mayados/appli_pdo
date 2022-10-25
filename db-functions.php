@@ -45,7 +45,7 @@ function findAll(){
     echo "<br><br><a href='product.php?ref=".$product['id']."'>".$product['name']."</a><br><br> "
     .substr($product['description'],0,45)."...<br> 
     <strong>".$product['price']." euros</strong><br>
-    <a href='#'>Ajouter au panier</a>"; 
+    <a href='traitement.php'>Ajouter au panier</a>"; 
     }
 }
 
