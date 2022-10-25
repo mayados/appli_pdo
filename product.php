@@ -1,5 +1,8 @@
 <?php
+
     require('db-functions.php');
+    connexion();
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,7 +16,9 @@
     <div id="container-page">
         <a href="admin.php">Retour</a>
         <?php
-            findOneById(15);
+            /* Nous récupérons la valeur envoyée dans le lien, qui correspond à l'id du produit */
+            $ref = (isset($_GET['ref'])) ? $_GET['ref'] : "";
+            findOneById($ref);
         ?>
         <a href="#">Ajouter au panier</a>
     </div>
