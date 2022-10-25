@@ -50,21 +50,34 @@ findAll();
 
 //Fonction findOneById($id) : renvoie le produit répondant à l'id en paramètre
 
+function findOneById($id){
+    /* Nous nous connectons à la base de données */
+    $pdo = connexion();
+    /* Faire attention à la syntaxe (des quotes) sinon la variable n'est pas récupérée */
+    $sqlQuery = 'SELECT name FROM product WHERE id='.$id.'';
+    $leProduit = $pdo->prepare($sqlQuery);
+    $leProduit->execute();
+    $produit = $leProduit->fetchAll();
+    foreach ($produit as $prod) {
+        echo $prod['name']."<br>"; 
+    }
+}
 
+findOneById(10);
 
 //Fonction insertProduct($name,$descr,$price) : insère en bdd un nouvel enregistrement dans la table product
 
-function insertProduct(){
+function insertProduct($name,$descr,$price){
     $pdo = connexion();
     $sql = "INSERT INTO 
     product(name,description,price)
-    VALUES('mangue','fruit avec beaucoup d eau',5)";
+    VALUES('$name','$descr','$price')";
 
     $pdo->prepare($sql);
     $pdo->exec($sql);
     echo "entree ajoutee";
 }
 
-// insertProduct();
+ insertProduct('ballon','super objet pour les fêtes',4);
 
 ?>
