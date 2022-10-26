@@ -85,4 +85,15 @@ function insertProduct($name,$descr,$price){
 
 //  insertProduct('ballon','super objet pour les fêtes',4);
 
+function lastIdInsert(){
+    $pdo = connexion();
+    $sql = 'SELECT id FROM product';
+    $pdo->prepare($sql);
+    $pdo->exec($sql);
+    $idLast = $pdo->lastInsertId();
+    return $idLast;
+}
+
+
+
 ?>
