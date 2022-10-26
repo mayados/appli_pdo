@@ -49,7 +49,7 @@
                                     "<td>".$index."</td>",
                                     "<td>".$product['name']."</td>",
                                     /* On modifie l'affichage du prix avec number_format */
-                                    "<td>".number_format($product['price'], 2, ",", "&nbsp;")."&nbsp;€</td>",
+                                    "<td>".$product['price']."&nbsp;€</td>",
                                     "<td id='quantite-produit'>
                                     <a href='traitement.php?action=baisserQuantite&ref=$index'>-</a>".$quantiteProduit."<a href='traitement.php?action=augmenterQuantite&ref=$index'>+</a> </td>",
                                     "<td>".number_format($product['total'], 2, ",", "&nbsp;")."&nbsp;€</td>",
@@ -78,7 +78,7 @@
                 ?>
         </div>
 
-            <a id="retour-index" href="index.php">
+            <a id="retour-index" href="admin.php">
                 <i class="fa-solid fa-rotate-left"></i>
                 <p>Retour à l'index</p>
             </a>          
