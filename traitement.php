@@ -13,7 +13,8 @@
     $name = (isset($_GET['name'])) ? $_GET['name'] : "";
     $price = (isset($_GET['price'])) ? $_GET['price'] : "";
     var_dump($ref);
-    $produit = (isset($_GET['produit'])) ? $_GET['produit'] : "";    
+    $produit = (isset($_GET['produit'])) ? $_GET['produit'] : "";   
+    $qtt = 1; 
     /* Si un produit est ajouté.. */
     switch($action) {
 
@@ -24,7 +25,7 @@
                 $id = $ref;
                 $name = $name;
                 $price = $price;
-                // $qtt = filter_input(INPUT_POST, "qtt", FILTER_VALIDATE_INT);
+                $qtt = $qtt;
 
 
                 //Nous devons conserver chaque produit renseigné, donc les stocker esession. On décide d'abord de leur organisation au sein de la session 
@@ -33,9 +34,9 @@
                     $product = [
                         "id" => $id,
                         "name" => $name,
-                        "price" => $price
-                        // "qtt" => $qtt,
-                        // "total" => $price*$qtt
+                        "price" => $price,
+                        "qtt" => $qtt,
+                        "total" => $price*$qtt
                     ];
                 
                     /* On enregistre le produit en session */
