@@ -42,10 +42,10 @@ function findAll(){
 
     /* Pour chaque produit, on affiche ses informations */
     foreach ($products as $product) {
-    echo "<br><br><a href='product.php?ref=".$product['id']."'>".$product['name']."</a><br><br> "
+    echo "<br><br><a href='product.php?ref=".$product['id']."&name=".$product['name']."&price=".$product['price']."'>".$product['name']."</a><br><br> "
     .substr($product['description'],0,45)."...<br> 
     <strong>".$product['price']." euros</strong><br>
-    <a href='traitement.php'>Ajouter au panier</a>"; 
+    <a href='traitement.php?action=ajouterProduit&ref=".$product['id']."&name=".$product['name']."&price=".$product['price']."'>Ajouter au panier</a>"; 
     }
 }
 
