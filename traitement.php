@@ -47,6 +47,7 @@
 
                     
                 }
+                
             }
 
 
@@ -66,10 +67,15 @@
                 if($nom && $prix && $descr){
                     /* On appelle la fonction créée dans db-functions.php pour insérer un produit dans la bdd */
                     /* Penser à mettre les variables dans le même ordre que dans la fonction */
-                    insertProduct($nom,$descr,$prix);
+                    insertProduct($nom,$descr,$prix); 
                 }
             }
-            header("Location:admin.php");
+                $idproduit = lastIdInsert();
+                var_dump($idproduit);
+                header("Location:product.php?&ref=$idproduit&name=$nom&price=$prix");
+                // header("Location:recap.php");
+ 
+
         break;
 
         /* On a nommé l'action "viderPanier" dans récap.php. Au cas où c'est cela, on retire tous les produits de la session et on rediirige vers la page recap.php */
@@ -106,5 +112,4 @@
         break;
     }
 
-  
 ?>
