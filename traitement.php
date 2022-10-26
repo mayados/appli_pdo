@@ -3,8 +3,8 @@
     session_start();
     require('functions.php');
     require('db-functions.php');
-    /* Pour récupérer les éléments de la bdd, il faut s'y connecter */
     connexion();
+    /* Pour récupérer les éléments de la bdd, il faut s'y connecter. Et connexion() a déjà été appelée dans cette fonction*/
     findAll();
 
     /* On a indiqué dans index que le mot clé pour récupérer action s'appelle "action"*/
@@ -13,7 +13,6 @@
     $ref = (isset($_GET['ref'])) ? $_GET['ref'] : "";
     $name = (isset($_GET['name'])) ? $_GET['name'] : "";
     $price = (isset($_GET['price'])) ? $_GET['price'] : "";
-    var_dump($ref);
     $produit = (isset($_GET['produit'])) ? $_GET['produit'] : "";   
     $qtt = 1; 
     /* Si un produit est ajouté.. */
@@ -51,20 +50,23 @@
             }
 
 
-            /* Redirection vers la page admin, qu'il soit saisi ou non */
+            /* Redirection vers la page recap */
             header("Location:recap.php");
         break;
 
         case "ajouterProduitBdd":
+            /* On vérifie d'abord que le formulaire a été envoyé avec le bouton */
             if(isset($_POST['submit'])){
+                /* On filtre les input et textarea pour ne pas qu'il y ait des failles allant contre la sécurité */
                 $nom = filter_input(INPUT_POST, "name", FILTER_SANITIZE_SPECIAL_CHARS);
                 $prix = filter_input(INPUT_POST, "price", FILTER_VALIDATE_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
                 $descr = filter_input(INPUT_POST, "descr", FILTER_SANITIZE_SPECIAL_CHARS);
 
-                if($name && $price && $descr){
-
-                    insertProduct($name,$price,$descr);
-
+                /* Si nous avons tous les champs remplis correctement */
+                if($nom && $prix && $descr){
+                    /* On appelle la fonction créée dans db-functions.php pour insérer un produit dans la bdd */
+                    /* Penser à mettre les variables dans le même ordre que dans la fonction */
+                    insertProduct($nom,$descr,$prix);
                 }
             }
             header("Location:admin.php");
