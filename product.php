@@ -20,7 +20,8 @@
             $ref = (isset($_GET['ref'])) ? $_GET['ref'] : "";
             findOneById($ref);
         ?>
-        <a href="traitement.php">Ajouter au panier</a>
+        <!-- On renvoie vers la page traitement pour que les produits soient ajoutés -->
+        <a href="traitement.php?action=ajouterProduit&ref=$ref&$name=$name&price=$price">Ajouter au panier</a>
     </div>
 </body>
 </html>
