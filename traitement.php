@@ -3,6 +3,7 @@
     session_start();
     require('functions.php');
     require('db-functions.php');
+    /* Pour récupérer les éléments de la bdd, il faut s'y connecter */
     connexion();
     findAll();
 
@@ -52,6 +53,21 @@
 
             /* Redirection vers la page admin, qu'il soit saisi ou non */
             header("Location:recap.php");
+        break;
+
+        case "ajouterProduitBdd":
+            if(isset($_POST['submit'])){
+                $nom = filter_input(INPUT_POST, "name", FILTER_SANITIZE_SPECIAL_CHARS);
+                $prix = filter_input(INPUT_POST, "price", FILTER_VALIDATE_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
+                $descr = filter_input(INPUT_POST, "descr", FILTER_SANITIZE_SPECIAL_CHARS);
+
+                if($name && $price && $descr){
+
+                    insertProduct($name,$price,$descr);
+
+                }
+            }
+            header("Location:admin.php");
         break;
 
         /* On a nommé l'action "viderPanier" dans récap.php. Au cas où c'est cela, on retire tous les produits de la session et on rediirige vers la page recap.php */
