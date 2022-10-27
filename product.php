@@ -1,7 +1,9 @@
 <?php
 
     require('db-functions.php');
+    /* On se connecte à la base de données */
     connexion();
+    /* On récupère la référence du produit concerné */
     $id= $_GET['ref'];
 ?>
 <!DOCTYPE html>
@@ -23,11 +25,11 @@
                 echo "<br>".$produit['name']."<br>"
                 .$produit['description']."<br>"
                 .$produit['price']." euros<br>"; 
+                /* On renvoie vers l'action ajouterProduit pour que ce soit rajouté dans la session et dans le panier. On indique l'id de l'élément en question */
                 echo "<a href='traitement.php?action=ajouterProduit&ref=".$id."'>Ajouter au panier</a>";        
 
             // die;
         ?>
-        <!-- On renvoie vers la page traitement pour que les produits soient ajoutés -->
     </div>
 </body>
 </html>
