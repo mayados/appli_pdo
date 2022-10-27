@@ -35,12 +35,14 @@ connexion();
 function findAll(){
     /* cette variable est égale au return de la fonction connexion() */
     $pdo = connexion();
+    /* Requête sql pour savoir ce que l'on sélectionne */
     $sqlQuery = 'SELECT * FROM product';
-    /* nous ajoutons prepare afin de sécuriser les informations */
+    /* nous ajoutons prepare afin de sécuriser les informations, ainsi, on execute uniquement ce qui a été préparé auparavant */
     $tousProduits = $pdo->prepare($sqlQuery);
     $tousProduits->execute();
     /* Tous les éléments sont stockés dans un tableau */
     $products = $tousProduits->fetchAll();
+    /* return indique ce qui sera rretourné lorsque l'on appelle la fonction */
     return $products;
 
 }
@@ -59,16 +61,14 @@ function findOneById($id){
     /* Récupérer un seul élément : fetch()/ fetchAll() : pour plusieurs éléments, renvoie un tableau */
     $produit = $leProduit->fetch();
     return $produit;
-
-
 }
 
-// findOneById(10);
 
 //Fonction insertProduct($name,$descr,$price) : insère en bdd un nouvel enregistrement dans la table product
 
 function insertProduct($name,$descr,$price){
     $pdo = connexion();
+    /* On insère les paramètres de insertProducts en tant que valeurs dans la table product */
     $sql = "INSERT INTO 
     product(name,description,price)
     VALUES('$name','$descr',$price)";
@@ -80,14 +80,7 @@ function insertProduct($name,$descr,$price){
     $insert->execute();
     /* On retourne un integer */
     return $pdo->lastInsertId();
-    // echo "entree ajoutee";
 }
-
-//  insertProduct('ballon','super objet pour les fêtes',4);
-
-
-
-
 
 
 ?>
