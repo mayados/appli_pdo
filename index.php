@@ -10,7 +10,6 @@
 </head>
 <body>
     <div id="container-page">
-    <h1>Ajouter un nouveau produit</h1>
     <?php
         /* Il faut avoir accès au tableau $_SESSION pour connaître le nombre de produits actuels */
         session_start();
