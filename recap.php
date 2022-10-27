@@ -78,7 +78,7 @@
                 ?>
         </div>
 
-            <a id="retour-index" href="admin.php">
+            <a id="retour-index" href="index.php">
                 <i class="fa-solid fa-rotate-left"></i>
                 <p>Retour à l'index</p>
             </a>          
