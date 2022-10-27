@@ -10,23 +10,22 @@
     /* On a indiqué dans index que le mot clé pour récupérer action s'appelle "action"*/
     $action = $_GET["action"];
     /* Pour éviter des erreurs, on vérifie s'il y a bien la valeur à la variable ref / les  ":" signifient que s'il n'y a pas on met rien */
-    $ref = (isset($_GET['ref'])) ? $_GET['ref'] : "";
-    // $name = (isset($_GET['name'])) ? $_GET['name'] : "";
-    // $price = (isset($_GET['price'])) ? $_GET['price'] : "";
-    // $produit = (isset($_GET['produit'])) ? $_GET['produit'] : "";   
+    $ref = (isset($_GET['ref'])) ? $_GET['ref'] : ""; 
     $qtt = 1; 
     $idP= $_GET['ref']; 
     /* Si un produit est ajouté.. */
     switch($action) {
         
         case "ajouterProduit":
+            /* Notre produit est égal à la function findOneById (car on récupère tous les éléments définissants le produit) ayant pour référence $_GET['ref'] (= on récupère la référence du produit avec un get)*/
             $produit = findOneById($_GET['ref']);
               /* Vérifier si l'on a la clé id du produit */
             if(isset($idP)){
         
                 /* Vérification de l'intégralité des valeurs transmises dans le tableau $_POST en fonction de celles que nous attendons */
- 
+                
                 $id = $idP;
+                /* $name est égal à l'attribut 'name' du produit que l'on a récupéré avec findOneById (le produit est ici représenté par la variable $produit) */
                 $name = $produit['name'];
                 $price = $produit['price'];
                 $qtt = $qtt;    
@@ -34,21 +33,27 @@
                 // var_dump($name);      
                 // var_dump($price);       
                 // die;                   
-
-
+                
+                
                 /* Enlever les doublons dans le panier */
-                
-                if($_SESSION['products'][$ref]['id'] == $id){
-                    $_SESSION['products'][$ref]["qtt"]++;
-                }else{
-                    
-                
 
+                /* Pour chaque produit dans le panier, nous avons l'index et le produit. L'index est égal à l'index affiché dans le panier (=chaque produit se situe à un index du tableau products) */
+                foreach($_SESSION['products'] as $index => $product){
+                    var_dump($product['id']);
+                    var_dump($id);
+                    
+                    if($product['id'] == $id){
+                        /* Si l'id (de la bdd) du produit mis dans le panier est égal à l'id (de la dbb) du produit que l'on souhaite ajouter, on appelle l'action augmenterQuantité (qui va éxecuter le code présent dans cette action) */
+                        header("Location:traitement.php?action=augmenterQuantite&ref=".$index);
+                        /* Sans le die, cette action ne s'effectue pas, on arrête l'éxecution du programme ici */
+                        die;
+                    }
+                    /*  Pas de else ici, ainsi ca ne rajoute pas des produits inutilement. Naturellement, dans l'autre cas, le produit sera ajouté */
+                }
 
 
                     //Nous devons conserver chaque produit renseigné, donc les stocker esession. On décide d'abord de leur organisation au sein de la session 
-                    if($name){
-
+                    if($name){                        
                         $product = [
                             "id" => $id,
                             "name" => $name,
@@ -59,13 +64,13 @@
                     
                         /* On enregistre le produit en session */
                         /* On appelle le tableau session fournit par php, on y indique un clé "products" */
-                        $_SESSION['products'][] = $product;
+                        $_SESSION['products'][] = $product;    
                         
-                        $_SESSION['message'] = "<div id='succes'>Le produit $name a été ajouté avec succès</div>";
+                        $_SESSION['message'] = "<div id='succes'>Le produit $name a été ajouté avec succès</div>";    
 
                         
                     }
-                }
+            
                 
             }
 
@@ -86,7 +91,7 @@
                 if($nom && $prix && $descr){
                     /* On appelle la fonction créée dans db-functions.php pour insérer un produit dans la bdd */
                     /* Penser à mettre les variables dans le même ordre que dans la fonction */
-                    /* On a return un integer depuis la function insertProduct */
+                    /* On a return un integer depuis la function insertProduct, donc quand on appelle la function, on appel l'entier qui y est associé */
                     $lastId = insertProduct($nom,$descr,$prix);
                 }
             }
