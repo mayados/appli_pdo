@@ -40,7 +40,7 @@
                             "<tbody>";
                         $totalGeneral = 0;
                         $nombreProduits = count($_SESSION['products']); 
-                        /* Pour chaque element product du tableau products : products correspond à l'index*/
+                        /* Pour chaque element product du tableau products est associé à un index (de products)*/
                         foreach($_SESSION['products'] as $index => $product){
                             $ref = $index;
                             $quantiteProduit = $product['qtt'];
