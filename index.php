@@ -15,10 +15,18 @@
         session_start();
         require('db-functions.php');
         connexion();
-        findAll();
+        /* On utilise findAll() pour trouver chaque produit */
+        $products = findAll();
         require('functions.php');
         showMessage();
         
+        /* Pour chaque produit, on affiche ses informations */
+        foreach ($products as $product) {
+        echo "<br><br><a href='product.php?ref=".$product['id']."'>".$product['name']."</a><br><br> "
+        .substr($product['description'],0,45)."...<br> 
+        <strong>".$product['price']." euros</strong><br>
+        <a href='traitement.php?action=ajouterProduit&ref=".$product['id']."'>Ajouter au panier</a>"; 
+        }
     ?>
 
                         <p>Nombre de produits actuels : 
@@ -27,11 +35,13 @@
                                 if(isset($_SESSION['products'])){
                                     /* Déclarer la variable ici et non en dehors de la condition, sinon cela fera undefined */
                                     $nombreProduits = $_SESSION['products']; 
-                                    echo " ".count($nombreProduits)."";
+                                    echo " ".count($nombreProduits)."<br>";
                                 } else{
-                                    echo "0";
+                                    echo "0 <br>";
                                 }
                             ?>
+
+        <a id="recap" href="recap.php">Récapitulatif</a> 
           
         
 
