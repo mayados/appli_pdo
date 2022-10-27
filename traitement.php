@@ -108,7 +108,9 @@
         break;
 
         case "augmenterQuantite":
-            /* IL FAUT PRECISER OBLIGATOIREMENT L INDEX DU PRODUIT QUE L'ON VEUT AUGMENTER */
+            /* On affiche un message lorsque la quantité du produit est augmentée. On récupère le nom en récupérant l'index du produit qui nous intéresse dans la session */
+            $_SESSION['message'] = "<div id='produit-qtt'>La quantité du produit ".$_SESSION['products'][$ref]['name']." a été augmentée</div>" ;
+            /* IL FAUT PRECISER OBLIGATOIREMENT L INDEX DU PRODUIT QUE L'ON VEUT AUGMENTER */            
             $_SESSION['products'][$ref]["qtt"]++;
             /* On dit que le total des produits pour cet index est égal à la quantité de cet index multiplié au prix affiché dans cet index */
             $_SESSION['products'][$ref]["total"] =  $_SESSION['products'][$ref]["qtt"] *  $_SESSION['products'][$ref]["price"];
@@ -118,6 +120,7 @@
         case "baisserQuantite":
             /* Il faut supprimer le produit quand la quantité est inférieure à 1 */
             if($_SESSION['products'][$ref]["qtt"] > 1){
+                $_SESSION['message'] = "<div id='produit-qtt-moins'>La quantité du produit ".$_SESSION['products'][$ref]['name']." a été abaissée</div>" ;
                 $_SESSION['products'][$ref]["qtt"]--;
                 $_SESSION['products'][$ref]["total"] =  $_SESSION['products'][$ref]["qtt"] *  $_SESSION['products'][$ref]["price"];                
             }else {
