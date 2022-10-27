@@ -1,5 +1,7 @@
 <?php
 
+/* Remarque générale : éviter d'ajouter les echos et foreach etc dans les fonctions, comme ça on peut réutiliser les fonctions où l'on a besoin. (Appeler les echo et foreach par exemple dans les pages que l'on affiche, en faisant référence à la fonction voulue) */
+
 /* Connexion à la base de données */
 
 function connexion(){
@@ -39,15 +41,8 @@ function findAll(){
     $tousProduits->execute();
     /* Tous les éléments sont stockés dans un tableau */
     $products = $tousProduits->fetchAll();
-    // return $products;
+    return $products;
 
-    /* Pour chaque produit, on affiche ses informations */
-    foreach ($products as $product) {
-    echo "<br><br><a href='product.php?ref=".$product['id']."'>".$product['name']."</a><br><br> "
-    .substr($product['description'],0,45)."...<br> 
-    <strong>".$product['price']." euros</strong><br>
-    <a href='traitement.php?action=ajouterProduit&ref=".$product['id']."'>Ajouter au panier</a>"; 
-    }
 }
 
 // findAll();
@@ -61,7 +56,8 @@ function findOneById($id){
     $sqlQuery = 'SELECT name,description,price FROM product WHERE id='.$id.'';
     $leProduit = $pdo->prepare($sqlQuery);
     $leProduit->execute();
-    $produit = $leProduit->fetchAll();
+    /* Récupérer un seul élément : fetch()/ fetchAll() : pour plusieurs éléments, renvoie un tableau */
+    $produit = $leProduit->fetch();
     return $produit;
 
 
