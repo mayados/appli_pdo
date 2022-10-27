@@ -76,23 +76,21 @@ function insertProduct($name,$descr,$price){
     $pdo = connexion();
     $sql = "INSERT INTO 
     product(name,description,price)
-    VALUES('$name','$descr','$price')";
+    VALUES('$name','$descr',$price)";
 
-    $pdo->prepare($sql);
-    $pdo->exec($sql);
-    echo "entree ajoutee";
+    /* On peut récupérer le dernier id dans cette fonction, car comme on insert le dernier produit, il y a déjà une requete sql avec SELECT, et il n'y a plus qu'à éxecuter et récupérer le dernier ID du produit qu'on vient d'insérer (comme on y a accès) */
+    /* On crée une variable pour stocker la préparation de la requete (pour ne pas écraser $pdo) */
+    $insert= $pdo->prepare($sql);
+    /* On exécute la requete qui a été préparée */
+    $insert->execute();
+    /* On retourne un integer */
+    return $pdo->lastInsertId();
+    // echo "entree ajoutee";
 }
 
 //  insertProduct('ballon','super objet pour les fêtes',4);
 
-function lastIdInsert(){
-    $pdo = connexion();
-    $sql = 'SELECT id FROM product';
-    $pdo->prepare($sql);
-    $pdo->exec($sql);
-    $idLast = $pdo->lastInsertId();
-    return $idLast;
-}
+
 
 
 
