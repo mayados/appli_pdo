@@ -67,12 +67,13 @@
                 if($nom && $prix && $descr){
                     /* On appelle la fonction créée dans db-functions.php pour insérer un produit dans la bdd */
                     /* Penser à mettre les variables dans le même ordre que dans la fonction */
-                    insertProduct($nom,$descr,$prix); 
+                    /* On a return un integer depuis la function insertProduct */
+                    $lastId = insertProduct($nom,$descr,$prix);
+                    var_dump($lastId);
+                    die;
                 }
             }
-                $idproduit = lastIdInsert();
-                var_dump($idproduit);
-                header("Location:product.php?&ref=$idproduit&name=$nom&price=$prix");
+                header("Location:product.php?&ref=$lastIdt&name=$nom&price=$prix");
                 // header("Location:recap.php");
  
 
