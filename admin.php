@@ -22,6 +22,7 @@
                 <p>
                     <label>
                         <p class="label-p">Nom du produit :</p>
+                        <!-- required pour indiquer que c'est un champ qui doit obligatoirement être rempli -->
                         <input required type="text" name="name">
                     </label>
                 </p>
@@ -44,7 +45,8 @@
                     <label>
                         <p>Nombre de produits actuels : 
                             <?php
-                               
+                               /* S'il y a des produits dans la session, on compte le nombre d'index de la session (car 1 index = 1 produits) */
+                               /* S'il n'y a pas de produits en session, on affiche 0 */
                                 if(isset($_SESSION['products'])){
                                     /* Déclarer la variable ici et non en dehors de la condition, sinon cela fera undefined */
                                     $nombreProduits = $_SESSION['products']; 
