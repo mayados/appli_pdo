@@ -39,13 +39,14 @@ function findAll(){
     $tousProduits->execute();
     /* Tous les éléments sont stockés dans un tableau */
     $products = $tousProduits->fetchAll();
+    // return $products;
 
     /* Pour chaque produit, on affiche ses informations */
     foreach ($products as $product) {
-    echo "<br><br><a href='product.php?ref=".$product['id']."&name=".$product['name']."&price=".$product['price']."'>".$product['name']."</a><br><br> "
+    echo "<br><br><a href='product.php?ref=".$product['id']."'>".$product['name']."</a><br><br> "
     .substr($product['description'],0,45)."...<br> 
     <strong>".$product['price']." euros</strong><br>
-    <a href='traitement.php?action=ajouterProduit&ref=".$product['id']."&name=".$product['name']."&price=".$product['price']."'>Ajouter au panier</a>"; 
+    <a href='traitement.php?action=ajouterProduit&ref=".$product['id']."'>Ajouter au panier</a>"; 
     }
 }
 
@@ -61,11 +62,9 @@ function findOneById($id){
     $leProduit = $pdo->prepare($sqlQuery);
     $leProduit->execute();
     $produit = $leProduit->fetchAll();
-    foreach ($produit as $prod) {
-        echo "<br>".$prod['name']."<br>"
-        .$prod['description']."<br>"
-        .$prod['price']."<br>"; 
-    }
+    return $produit;
+
+
 }
 
 // findOneById(10);
@@ -89,6 +88,7 @@ function insertProduct($name,$descr,$price){
 }
 
 //  insertProduct('ballon','super objet pour les fêtes',4);
+
 
 
 
