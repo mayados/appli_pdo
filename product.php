@@ -2,7 +2,7 @@
 
     require('db-functions.php');
     connexion();
-    
+    $id= $_GET['ref'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,14 +14,19 @@
 </head>
 <body>
     <div id="container-page">
-        <a href="admin.php">Retour</a>
+        <a href="index.php">Retour</a>
         <?php
             /* Nous récupérons la valeur envoyée dans le lien, qui correspond à l'id du produit */
             $ref = (isset($_GET['ref'])) ? $_GET['ref'] : "";
-            $name = (isset($_GET['name'])) ? $_GET['name'] : "";
-            $price = (isset($_GET['price'])) ? $_GET['price'] : "";
-            findOneById($ref);
-            echo "<a href='traitement.php?action=ajouterProduit&ref=$ref&name=$name&price=$price'>Ajouter au panier</a>";
+            $produit = findOneById($ref);
+
+
+            foreach ($produit as $prod) {
+                echo "<br>".$prod['name']."<br>"
+                .$prod['description']."<br>"
+                .$prod['price']." euros<br>"; 
+                echo "<a href='traitement.php?action=ajouterProduit&ref=".$id."'>Ajouter au panier</a>";        
+            }
             // die;
         ?>
         <!-- On renvoie vers la page traitement pour que les produits soient ajoutés -->
