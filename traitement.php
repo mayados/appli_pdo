@@ -69,12 +69,9 @@
                     /* Penser à mettre les variables dans le même ordre que dans la fonction */
                     /* On a return un integer depuis la function insertProduct */
                     $lastId = insertProduct($nom,$descr,$prix);
-                    var_dump($lastId);
-                    die;
                 }
             }
-                header("Location:product.php?&ref=$lastIdt&name=$nom&price=$prix");
-                // header("Location:recap.php");
+                header("Location:product.php?&ref=$lastId&name=$nom&price=$prix");
  
 
         break;
