@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link rel="stylesheet" href="css/styles.css"> -->
+    <link rel="stylesheet" href="css/admin.css"> 
     <title>Accueil admin</title>
 </head>
 <body>
@@ -16,19 +16,19 @@
     require('functions.php');
     showMessage();
     ?>
-    <h1>Ajouter un nouveau produit dans la base de données</h1>
+    <h1>Ajouter un nouveau jeu dans la base de données</h1>
         <section id="formulaire">
             <form action="traitement.php?action=ajouterProduitBdd" method="post">
                 <p>
                     <label>
-                        <p class="label-p">Nom du produit :</p>
+                        <p class="label-p">Nom du jeu :</p>
                         <!-- required pour indiquer que c'est un champ qui doit obligatoirement être rempli -->
                         <input required type="text" name="name">
                     </label>
                 </p>
                 <p>
                     <label>
-                        <p class="label-p">Prix du produit :</p>
+                        <p class="label-p">Prix du jeu :</p>
                         <input required type="number" step="any" name="price" min=0>
                     </label>
                 </p>
