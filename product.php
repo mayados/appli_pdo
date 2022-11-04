@@ -12,6 +12,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/product.css">
     <title>Product</title>
 </head>
 <body>
@@ -22,11 +23,13 @@
             $produit = findOneById($id);
 
 
-                echo "<br>".$produit['name']."<br>"
-                .$produit['description']."<br>"
-                .$produit['price']." euros<br>"; 
+                echo "<div id='container-game'>
+                        <h3>".$produit['name']."</h3>
+                        <p>".$produit['description']."</p>
+                        <p>".$produit['price']." €</p>"; 
                 /* On renvoie vers l'action ajouterProduit pour que ce soit rajouté dans la session et dans le panier. On indique l'id de l'élément en question */
-                echo "<a href='traitement.php?action=ajouterProduit&ref=".$id."'>Ajouter au panier</a>";        
+                echo "<a href='traitement.php?action=ajouterProduit&ref=".$id."'>Ajouter au panier</a>
+                    </div>";        
 
             // die;
         ?>
