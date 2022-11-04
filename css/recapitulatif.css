@@ -16,7 +16,7 @@ a {
 #container-page {
     background-color: rgb(210, 210, 226);
     height: 100vh;
-    background-image: url("../img/back_cart.jpg");
+    background-image: url("../img/back_game.jpg");
     background-position: center;
     background-repeat: no-repeat;
     /* L'image s'adapte pour couvrir son container */
@@ -130,7 +130,7 @@ h1 {
     gap: 10px;
     text-decoration: none;
     margin-top: 100px;
-    background-color: rgb(116, 220, 238);
+    background-color: rgb(39, 62, 174);
     border: 2px solid white;
     padding: 10px;
     border-radius: 20px;
@@ -140,6 +140,6 @@ h1 {
 
 
 #retour-index:hover {
-    background-color: rgb(133, 190, 228);
+    background-color: rgb(74, 122, 154);
 }
 
